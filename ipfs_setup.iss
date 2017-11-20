@@ -30,7 +30,8 @@ SolidCompression=yes
 ArchitecturesAllowed=x64
 PrivilegesRequired=admin
 UninstallDisplayIcon={app}\ipfs.ico
-
+WizardImageFile=IPFS.bmp
+WizardSmallImageFile=IPFS-small.bmp
 [Languages]
 Name: "english"; MessagesFile: "compiler:Default.isl"
 Name: "brazilianportuguese"; MessagesFile: "compiler:Languages\BrazilianPortuguese.isl"
