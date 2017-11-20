@@ -1,2 +1,2 @@
 ipfs.exe init
-start /B "" "ipfs.exe" daemon > %temp%\ipfsoutput.txt 
+start /B "" "ipfs.exe" daemon > %temp%\IPFS_output.txt 
