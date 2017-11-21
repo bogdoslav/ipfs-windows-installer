@@ -2,9 +2,12 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "IPFS"
-#define MyAppVersion "0.4.12"
+#define MyAppVersion "0.4.13"
 #define MyAppPublisher "Protocol Labs"
 #define MyAppURL "https://ipfs.io/"
+#define MyAppTestPageURL "http://localhost:8080/ipfs/QmYwAPJzv5CZsnA625s3Xf2nemtYgPpHdWEz79ojWnPbdG/readme"
+#define MyAppDownloadsURL "http://127.0.0.1:8080/ipfs/QmZiSAYkU7gZtqYeZWL21yuwgFtRnJu1JjDzR6Qd2qdDBr/"
+
 
 [Setup]
 ; NOTE: The value of AppId uniquely identifies this application.
@@ -30,8 +33,8 @@ SolidCompression=yes
 ArchitecturesAllowed=x64
 PrivilegesRequired=admin
 UninstallDisplayIcon={app}\ipfs.ico
-WizardImageFile=IPFS.bmp
-WizardSmallImageFile=IPFS-small.bmp
+WizardImageFile=images\IPFS.bmp
+WizardSmallImageFile=images\IPFS-small.bmp
 [Languages]
 Name: "english"; MessagesFile: "compiler:Default.isl"
 Name: "brazilianportuguese"; MessagesFile: "compiler:Languages\BrazilianPortuguese.isl"
@@ -65,10 +68,12 @@ Source: "C:\Users\user\Projects\ipfs-installer\build\*"; DestDir: "{app}"; Flags
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]
+Name: "{group}\IPFS Test Page"; Filename: "{#MyAppTestPageURL}"
 Name: "{group}\{cm:ProgramOnTheWeb,{#MyAppName}}"; Filename: "{#MyAppURL}"
 
 [Run]
 Filename: "install.bat"; WorkingDir: "{app}"; Flags: runascurrentuser runhidden; StatusMsg: "Initializing IPFS"
+Filename: "{#MyAppTestPageURL}"; Description: "{cm:LaunchProgram,{#MyAppName}}"; Flags: shellexec nowait postinstall skipifsilent
 
 [UninstallRun]
 Filename: "uninstall.bat"; WorkingDir: "{app}"; Flags: runhidden runascurrentuser
@@ -77,7 +82,7 @@ Filename: "uninstall.bat"; WorkingDir: "{app}"; Flags: runhidden runascurrentuse
 Root: HKLM; Subkey: "SYSTEM\CurrentControlSet\Control\Session Manager\Environment"; \
     ValueType: expandsz; ValueName: "Path"; ValueData: "{olddata};{app}"
     
-    [Code]
+[Code]
 function InitializeSetup(): boolean;
 var
   ResultCode: integer;
