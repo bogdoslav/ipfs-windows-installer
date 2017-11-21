@@ -7,11 +7,13 @@ https://github.com/bogdoslav/ipfs-windows-installer/blob/master/bin/ipfs_setup.e
 Build
 -----
 
-1. Download and install Inno Setup QuickStart Pack from http://www.jrsoftware.org/isdl.php
+1. Download and install [Inno Setup QuickStart Pack](http://www.jrsoftware.org/isdl.php)
 2. Run build.bat
 
-=Installation notes=
-1. Currently only x64 platform supported
+Installation notes
+------------------
+
+1. Currently x64 only platform supported
 2. Automated updates do not work
 
 ToDo
