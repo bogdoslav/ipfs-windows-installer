@@ -68,12 +68,16 @@ Source: "C:\Users\user\Projects\ipfs-installer\build\*"; DestDir: "{app}"; Flags
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]
+
+Name: "{commonstartup}\IPFS"; Filename: "{app}\ipfs.exe"; WorkingDir: "{app}"; Flags: closeonexit runminimized; IconFilename: "ipfs.ico"
+Name: "{group}\Start IPFS"; Filename: "ipfs.bat"; WorkingDir: "{app}"; Flags: closeonexit runminimized; IconFilename: "ipfs.ico"
+Name: "{group}\Stop IPFS"; Filename: "stop.bat"; WorkingDir: "{app}"; Flags: closeonexit runminimized; IconFilename: "stop.ico"
 Name: "{group}\IPFS Test Page"; Filename: "{#MyAppTestPageURL}"
 Name: "{group}\{cm:ProgramOnTheWeb,{#MyAppName}}"; Filename: "{#MyAppURL}"
 
 [Run]
 Filename: "install.bat"; WorkingDir: "{app}"; Flags: runascurrentuser runhidden; StatusMsg: "Initializing IPFS"
-Filename: "{#MyAppTestPageURL}"; Description: "{cm:LaunchProgram,{#MyAppName}}"; Flags: shellexec nowait postinstall skipifsilent
+Filename: "ipfs.bat"; WorkingDir: "{app}"; Flags: runasoriginaluser runhidden shellexec nowait postinstall skipifsilent; Description: "{cm:LaunchProgram,{#MyAppName}}"
 
 [UninstallRun]
 Filename: "uninstall.bat"; WorkingDir: "{app}"; Flags: runhidden runascurrentuser
